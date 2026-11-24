@@ -1,8 +1,10 @@
 # E22-900T22U configuration script
 
-`e22_config.py` reads and sets the parameters of an EBYTE **E22-900T22U** LoRa USB module (850.125–930.125 MHz) through its virtual serial port.
+`e22_config.py` reads and sets the parameters of an EBYTE **E22-900T22U** LoRa USB module (850.125–930.125 MHz) through its virtual serial port. This is the OS-independent terminal tool of RF_Setting Windows official tool.
 
-It follows the command set in the E22-xxxT22U user manual (v1.1): `C1` read, `C0` write (saved), `C2` write (temporary).
+It follows the command set in the E22-xxxT22U user manual (v1.1): `C1` read, `C0` write (saved), `C2` write (temporary).  
+
+https://www.cdebyte.com/products/E22-900T22U  
 
 ## Where to get modules
 
