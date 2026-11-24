@@ -85,15 +85,6 @@ python e22_config.py -p COM5 set --channel 30 --temporary
 
 868.125 MHz (channel 18), address 0, network ID 0, 9600 8N1, 2.4k air rate, 240-byte packets, 22 dBm, all other features off.
 
-## Notes
-
-- For two modules to talk, they need the same **channel**, **air rate**, **network ID** and **key**. The address must match unless you use broadcast (`0xFFFF`) or relay mode.
-- After `--baud`, the new rate applies in transmission mode only.
-- Power the module from a USB port that supplies at least 5 V. Below the recommended supply, output power drops.
-- Use an antenna on the SMA connector before transmitting.
-- Check the frequency and power limits for your region (for example, 868 MHz in the EU).
-- This script has not been tested on hardware by its author; check the output of `read` after `set`.
-
 ## Troubleshooting
 
 | Message | Likely cause |
