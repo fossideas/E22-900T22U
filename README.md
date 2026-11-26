@@ -1,6 +1,6 @@
-# E22-900T22U configuration script
+# E22-900T22U configuration script RF Setting
 
-`e22_config.py` reads and sets the parameters of an EBYTE **E22-900T22U** LoRa USB module (850.125–930.125 MHz) through its virtual serial port. This is the OS-independent terminal tool of RF_Setting Windows official tool.
+`e22_config.py` reads and sets the parameters of an EBYTE **E22-900T22U** LoRa USB module (850.125–930.125 MHz) through its virtual serial port. This is the OS-independent terminal tool version of the RF_Setting Windows official tool.
 
 It follows the command set in the E22-xxxT22U user manual (v1.1): `C1` read, `C0` write (saved), `C2` write (temporary).  
 
@@ -34,7 +34,11 @@ The module only accepts configuration commands in **configuration mode**.
 
 In configuration mode the serial link is always **9600 baud, 8N1**, whatever baud rate the module is set to for normal operation. The script handles this itself.
 
-Find the port name: `COMx` on Windows (Device Manager), `/dev/ttyACM0` or `/dev/ttyUSB0` on Linux (you may need `sudo usermod -aG dialout $USER`), `/dev/tty.usbmodem*` on macOS.
+Find the port name: `COMx` on Windows (Device Manager), `/dev/ttyACM0` or `/dev/ttyUSB0` on Linux , `/dev/tty.usbmodem*` on macOS.  
+  
+lsusb information example: ID 1a86:7523 QinHeng Electronics CH340 serial converter  
+dmesg information example: usb 1-2: ch341-uart converter now attached to ttyUSB0  
+
 
 ## Usage
 
