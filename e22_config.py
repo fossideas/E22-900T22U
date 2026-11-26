@@ -11,10 +11,10 @@ When finished, long-press the button again to return to transmission mode
 (steady GREEN).
 
 Examples:
-  python e22_config.py -p COM5 read
-  python e22_config.py -p /dev/ttyACM0 set --channel 20 --air-rate 9.6k --power 22
-  python e22_config.py -p COM5 set --address 0x1234 --netid 5 --key 4321 --lbt on
-  python e22_config.py -p COM5 reset
+  In Linux:
+  python e22_config.py -p /dev/ttyUSB0 read
+  In Windows:
+  python e22_config.py -p COM4 read
 """
 import argparse
 import sys
@@ -28,7 +28,7 @@ CONFIG_BAUD = 9600
 BAUDS = {1200: 0, 2400: 1, 4800: 2, 9600: 3, 19200: 4, 38400: 5, 57600: 6, 115200: 7}
 PARITY = {"8N1": 0, "8O1": 1, "8E1": 2}
 # Air rate: 000/001/010 are all 2.4k; default 010
-AIR_RATES = {"2.4k": 2, "4.8k": 3, "9.6k": 4, "19.2k": 5, "38.4k": 6, "62.5k": 7}
+AIR_RATES = {"0.3k": 0, "1.2k": 1, "2.4k": 2, "4.8k": 3, "9.6k": 4, "19.2k": 5, "38.4k": 6, "62.5k": 7}
 PACKETS = {240: 0, 128: 1, 64: 2, 32: 3}
 POWERS = {22: 0, 17: 1, 13: 2, 10: 3}
 
@@ -92,7 +92,7 @@ def describe(regs, pid=None):
     baud = rev(BAUDS)[get_bits(reg0, 7, 5)]
     parity = {0: "8N1", 1: "8O1", 2: "8E1", 3: "8N1"}[get_bits(reg0, 4, 3)]
     air_code = get_bits(reg0, 2, 0)
-    air = {0: "2.4k", 1: "2.4k", 2: "2.4k"}.get(air_code) or rev(AIR_RATES)[air_code]
+    air = rev(AIR_RATES)[air_code]
     packet = rev(PACKETS)[get_bits(reg1, 7, 6)]
     power = rev(POWERS)[get_bits(reg1, 1, 0)]
     onoff = lambda b: "on" if b else "off"
@@ -177,7 +177,7 @@ def int_auto(s):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Configure EBYTE E22-900T22U over USB serial")
+    ap = argparse.ArgumentParser(description="Configure EBYTE E22-900T22U over USB serial RF Setting, send feedback to fossideasdev@gmail.com")
     ap.add_argument("-p", "--port", required=True, help="e.g. COM5 or /dev/ttyACM0")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
