@@ -177,6 +177,8 @@ def int_auto(s):
 
 
 def main():
+    print("EBYTE E22-900T22U over USB serial RF Setting, send feedback to fossideasdev@gmail.com")
+    print("Product links: https://www.cdebyte.com/products/E22-900T22U https://s.click.aliexpress.com/e/_c3TWWnE5 https://link.amazon/B0c1O40l5 https://amzn.to/4lfsfea")
     ap = argparse.ArgumentParser(description="Configure EBYTE E22-900T22U over USB serial RF Setting, send feedback to fossideasdev@gmail.com")
     ap.add_argument("-p", "--port", required=True, help="e.g. COM5 or /dev/ttyACM0")
     sub = ap.add_subparsers(dest="cmd", required=True)
